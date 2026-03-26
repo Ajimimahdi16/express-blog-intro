@@ -2,9 +2,48 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+app.use (app.static('public'));
+
+
 app.get('/', (req, res) => {
   res.send('Server del mio blog');
 });
+app.get('/bacheca', (req, res) => {
+      const posts = [
+  {
+    titolo: "Ciambellone Soffice della Nonna",
+    contenuto: "Il classico dolce da colazione, semplice e genuino, preparato con ingredienti freschi e un tocco di limone.",
+    immagine: "ciambellone.jpeg",
+    tags: "dolce, colazione, fatto in casa, tradizione"
+  },
+  {
+    titolo: "Cracker Integrali alla Barbabietola",
+    contenuto: "Uno snack croccante e salutare dal colore vivace, perfetto per accompagnare formaggi cremosi o hummus.",
+    immagine: "cracker_barbabietola.jpeg",
+    tags: "snack, healthy, barbabietola, vegan"
+  },
+  {
+    titolo: "Pane Fritto Dolce",
+    contenuto: "Una ricetta di recupero golosissima: fette di pane dorate in padella e ricoperte di zucchero e cannella.",
+    immagine: "pane_fritto_dolce.jpeg",
+    tags: "dolce, riciclo, merenda, fritto"
+  },
+  {
+    titolo: "Pasta alla Crema di Barbabietola",
+    contenuto: "Un primo piatto scenografico e dal sapore delicato, dove la barbabietola crea una salsa avvolgente.",
+    immagine: "pasta_barbabietola.jpeg",
+    tags: "primo, pasta, vegetariano, gourmet"
+  },
+  {
+    titolo: "Torta Paesana (Torta di Pane)",
+    contenuto: "Il dolce tipico della tradizione lombarda a base di pane raffermo, latte, cacao e uvetta.",
+    immagine: "torta_paesana.jpeg",
+    tags: "dolce, tradizione, pane raffermo, cioccolato"
+  }
+];
+});
+res.json(posts);
+
 
 app.listen(port, () => {
   console.log(`il mio blog è in esecuzione su http://localhost:${port}`);
